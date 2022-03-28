@@ -2,7 +2,6 @@ package szdd
 
 import (
 	"bytes"
-	"fmt"
 )
 
 const WINDOW_SIZE = 4096;
@@ -13,12 +12,12 @@ func Expand(bs []byte) (data []byte, err error) {
 	window := make([]byte, WINDOW_SIZE)
 	header := bs[:14]
 	pos := WINDOW_SIZE - 16
-	res := bytes.Compare(header[:8], SZDD_SIGNATURE)
 	chunk := bs[14:]
 	data = make([]byte, 0, 3*len(bs))
 
+	res := bytes.Compare(header[:8], SZDD_SIGNATURE)
 	if res != 0 {
-		return nil, fmt.Errorf("wrong signature")
+		return bs, nil
 	}
 	for i := range window {
 		window[i] = 0

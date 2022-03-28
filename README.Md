@@ -4,7 +4,8 @@ Decompression for SZDD files ported from github.com/ryant523/szdd-expand to Gola
 
 # Usage
 
-`go install ./cmd/szdd`
-
+```
+go install ./cmd/szdd
 szdd -i archive.dat -o out.dat
+```
 
